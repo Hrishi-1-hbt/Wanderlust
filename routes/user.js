@@ -11,16 +11,13 @@ const userController = require("../controllers/listings.js");
 
 const port = 3030;
 
-router.get("/signup", userController.renderSignupForm);
+router.route("/signup")
+.get( userController.renderSignupForm)
+.post( wrapasync(userController.signup));
 
-router.post("/signup", wrapasync(userController.signup));
-
-router.get("/login", userController.renderLoginForm);
-
-router.post(
-    "/login",
-    saveRedirectUrl,
-    passport.authenticate('local', {
+router.route("/login")
+.get(userController.renderLoginForm)
+.post(saveRedirectUrl,passport.authenticate('local', {
         failureRedirect: '/login',
         failureFlash: true
     }),
@@ -29,9 +26,5 @@ router.post(
 
 router.get("/logout", userController.logout);
 
-// Remove this line, since you typically won't listen on a router
-router.listen(port, () => {
-    console.log(`app is listening on port ${port}`);
-});
 
 module.exports = router;
