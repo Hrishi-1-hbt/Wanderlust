@@ -1,4 +1,5 @@
 mapboxgl.accessToken = mapToken ;
+console.log(coordinates);
 
 
   const map = new mapboxgl.Map({
@@ -12,7 +13,7 @@ mapboxgl.accessToken = mapToken ;
   .setLngLat(coordinates)
   .setPopup(
     new mapboxgl.Popup({ offset: 25 }).setHTML(
-      <p>Exact Location provided after booking</p>
+      "<p>Exact Location provided after booking</p>"
     )
   )
   .addTo(map);
