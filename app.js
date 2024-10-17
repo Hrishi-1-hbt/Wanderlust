@@ -103,7 +103,7 @@ app.use("/",userRouter);
 
 // Handle all other routes
 app.all("*", (req, res, next) => {
-  next(new ExpressError(404, "Page Not Found!"));
+ throw next(new ExpressError(404, "Page Not Found!"));
 });
 
 // Error handler middleware
