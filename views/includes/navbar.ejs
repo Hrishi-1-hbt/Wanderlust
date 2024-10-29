@@ -1,118 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WanderLust </title>
+<link rel="stylesheet" href="/style.css" />
 
-  <style>
-    .WanderLust {
-      font-weight: bold;
-      color: #fe424d;
-    }
-
-    .search-inp {
-      border-radius: 25px;
-        padding: 0.5rem 1.5rem;
-        font-size: 1rem;
-        width: 400px;
-    }
-
-    .search-btn {
-      background-color: #fe424d;
-        color: #fff;
-        border-radius: 25px;
-        padding: 0 1rem;
-    }
-
-    .search-btn:hover {
-      background-color: #fc3c40;
-    }
-
-    .nav-link {
-      font-weight: bold;
-      color: #333;
-    }
-
-    /* Mobile view adjustments */
-    @media (max-width: 767px) {
-      .search-inp {
-        width: 200px;
-      }
-
-      /* Add full white background on focus/click in mobile view */
-      .search-inp:focus, .nav-link:focus {
-        background-color: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ddd;
-      }
-
-      .search-btn:focus {
-        background-color: white;
-        color: #333;
-        border: 1px solid #ddd;
-      }
-
-      /* To ensure white background even for login and signup */
-      .nav-link:hover {
-        background-color: white;
-        color: #000;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<!-- Navbar -->
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
-    <!-- Logo (Left) -->
-    <a class="navbar-brand" href="/">
-      <i class="fa-solid fa-compass"></i>
-    </a>
-
-
-    <!-- Toggler for mobile view -->
+  <div class="container-fluid compass">
+    <a class="navbar-brand" href="/listings" class="icon"><i class="fa-regular fa-compass"></i></a>
+    <a class="nav-link wanderlust" href="/listings"><b>Wanderlust</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link nav-item" aria-current="page" href="/"></a>
-        <a class="nav-link" href="/listings">
-          <h3 class="WanderLust nav-item">WanderLust</h3>
-        </a>
-      </div>
-
-      <!-- Search form -->
-      <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search" action="/listings/search" method="GET">
-          <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" aria-label="Search" name="location">
+      <div class="navbar-nav ms-auto bg-opacity-75">
+        <form class="d-flex" role="search" action="/listings/search" method="get">
+          <input 
+          class="form-control me-2 search-inp"
+           type="search"
+            placeholder="Search destinations" 
+            aria-label="Search"
+             name="location">
           <button class="btn search-btn" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i> Search
-          </button>
-        </form>
+            <i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>    
       </div>
 
-      <!-- User Links -->
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Show Your Space</a>
-
-        <% if(!currUser){ %>
-          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+      <div class="navbar-nav ms-auto bg-light p-2 bg-opacity-75" >
+        <a class="nav-link " href="/listings/new"><b>Add New Place</b></a>
+        <% if(!currUser) { %>
+          <a class="nav-link"  href="/signup"><b>Sign up</b></a>
           <a class="nav-link" href="/login"><b>Login</b></a>
         <% } %>
-        
-        <% if(currUser) { %>
-          <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% if(currUser) { %> 
+        <a class="nav-link" href="/logout"><b>Logout</b></a>
         <% } %>
       </div>
+      
     </div>
   </div>
 </nav>
-
-
-</body>
-</html>
