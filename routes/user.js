@@ -9,7 +9,7 @@ const userController = require("../controllers/users.js"); // Corrected: Changed
 
 router.route("/signup")
   .get(userController.renderSignupForm)
-  .post(wrapAsync(userController.signup));
+  .post(saveRedirectUrl,wrapAsync(userController.signup));
 
 router.route("/login")
   .get(userController.renderLoginForm)
