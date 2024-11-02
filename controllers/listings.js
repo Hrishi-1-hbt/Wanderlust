@@ -99,3 +99,21 @@ module.exports.destroyListing = async (req, res) => {
     req.flash("success", "Listing Deleted!");
     res.redirect("/listings");
 };
+module.exports.searchResult = async (req, res) => {
+    let { q } = req.query;
+    if (!q) {
+      res.redirect("/listings");
+    }
+    const results = await Listing.find({
+      $or: [
+        { location: { $regex: q, $options: "i" } },
+        { country: { $regex: q, $options: "i" } },
+        { title: { $regex: q, $options: "i" } },
+      ],
+    });
+    if (results.length === 0) {
+      req.flash("error", `No listing exists for '${q}'`);
+      return res.redirect("/listings");
+    }
+    res.render("listings/search.ejs", { results, query: q });
+  };
