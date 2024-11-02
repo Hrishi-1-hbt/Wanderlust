@@ -38,9 +38,8 @@ router.get(
   "/:id/edit",
   isLoggedIn,
   isOwner,
-  wrapAsync(listingController.renderEditListing)
+  wrapAsync(listingController.renderEditForm)
 );
-
 
 
 module.exports = router;
