@@ -1,5 +1,8 @@
 mapboxgl.accessToken = mapToken ;
 console.log(coordinates);
+if(coordinates.length==0){
+  coordinates=[77.5946,12.9716];
+}
 
 
   const map = new mapboxgl.Map({
